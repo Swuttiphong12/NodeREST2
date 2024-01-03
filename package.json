@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "format": "prettier --write *.js",
-    "dev": "nodemon idex"
+    "dev": "nodemon idex.js"
   },
   "keywords": [],
   "author": "",
