@@ -1,6 +1,6 @@
 //SQLIte3 CRUD operations
 //npm install sqlite3
-//Create a Bood.sqlite file in Database folder
+//Create a Book.sqlite file in Database folder
 //Run this file with node CRUDBookSQLite.js
 //Test with Postman
 
@@ -17,7 +17,7 @@ app.use(express.json());
 //create books table if it doesn't exist
 db.run(`CREATE TABLE IF NOT EXISTS books(
     id INTEGER PRIMARY KEY,
-    title Text,
+    title TEXT,
     author TEXT
 )`);
 
@@ -49,7 +49,7 @@ app.get(`/books/:id`, (req, res) => {
 
 //route to create a new book
 app.post('/books', (req, res) => {
-    const book = req.book;
+    const book = req.body;
     db.run('INSERT INTO books (title, author) VALUES (?, ?)', book.title, book.author, function(err) {
         if (err){
             res.status(500).send(err);
@@ -63,7 +63,7 @@ app.post('/books', (req, res) => {
 //route to update a book
 app.put('/books/:id', (req, res) => {
     const book = req.body;
-    db.run('UPDATE book SET title = ?, author = ? WHERE id = ?', book.title, book.author, req.params.id, function(err) {
+    db.run('UPDATE books SET title = ?, author = ? WHERE id = ?', book.title, book.author, req.params.id, function(err) {
         if (err){
             res.status(500).send(err);
         }else{
