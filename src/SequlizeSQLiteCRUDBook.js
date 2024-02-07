@@ -1,7 +1,7 @@
-//
-//
-//
-//
+//Description: Node Express REST API with Sequelize and SQLite CRUD Book
+//npm install express sequelize sqlite3
+//Run this file with node SequlizeSQLiteCRUDBook.js
+//Test with Postman
 
 const express = require('express');
 const Sequelize = require('sequelize');
@@ -91,7 +91,7 @@ app.delete('/books/:id', (req, res) => {
         if (!book){
             res.status(404).send('Book not found')
         }else{
-            book.destory().then(() => {
+            book.destroy().then(() => {
                 res.send({});
             }).catch(err => {
                 res.status(500).send(err);
